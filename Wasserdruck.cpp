@@ -58,7 +58,7 @@ static bool ParseDezimal(HWND hEdit, const wchar_t* feldname,
 
     if (*p == L'\0')
     {
-        swprintf(fehler, fehlerLen, L"Bitte \"%s\" eingeben.", feldname);
+        swprintf(fehler, fehlerLen, L"Bitte \"%ls\" eingeben.", feldname);
         return false;
     }
 
@@ -72,14 +72,14 @@ static bool ParseDezimal(HWND hEdit, const wchar_t* feldname,
     if (endp == buf || *endp != L'\0')
     {
         swprintf(fehler, fehlerLen,
-                 L"\"%s\": Bitte eine g\xfcltige Zahl eingeben (z. B. 4,20).",
+                 L"\"%ls\": Bitte eine g\xfcltige Zahl eingeben (z. B. 4,20).",
                  feldname);
         return false;
     }
     if (v < min || v > max)
     {
         swprintf(fehler, fehlerLen,
-                 L"\"%s\": Wert muss zwischen %.0f und %.0f liegen.",
+                 L"\"%ls\": Wert muss zwischen %.0f und %.0f liegen.",
                  feldname, min, max);
         return false;
     }
@@ -119,7 +119,7 @@ static void Berechnen(HWND hwnd)
     FormatiereBar(druckNeu, druckNeuTxt, 32);
 
     wchar_t ergebnis[N] = L"";
-    swprintf(ergebnis, N, L"Neuer Wasserdruck: %s bar", druckNeuTxt);
+    swprintf(ergebnis, N, L"Neuer Wasserdruck: %ls bar", druckNeuTxt);
     SetWindowText(GetDlgItem(hwnd, IDC_EDIT_ERGEBNIS), ergebnis);
 
     if (druckNeu < 0.0)
